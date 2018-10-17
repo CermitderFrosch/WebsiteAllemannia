@@ -16,6 +16,7 @@
   <body>
 
     <!-- Elements for pagestart -->
+	<svg id="marginLines"></svg>  
     <img id="emblem-main" src="../images/Wappen.jpg">
     <div id="lettering"></div>
     <img id="nav-arrow" src="../images/doubleDownNew.png">

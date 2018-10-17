@@ -1,17 +1,11 @@
-@media screen{
-
-  @standard-red: #cc071e;
-  @standard-yellow: #f9b200;
-  @standard-blue: #003871;
-
-  html{
+@media screen {
+  html {
     height: 100%;
     width: 100%;
     margin: 0px;
   }
-
-  body{
-   /* background-image: url('../images/bg_main.jpg');
+  body {
+    /* background-image: url('../images/bg_main.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -19,13 +13,11 @@
     width: 100%;
     margin: 0px; */
   }
-
-  hr{
+  hr {
     width: 100%;
-    border-color: @standard-yellow;
+    border-color: #f9b200;
   }
-
-  #emblem-main{
+  #emblem-main {
     display: block;
     opacity: 0;
     position: absolute;
@@ -37,20 +29,18 @@
     margin-top: -120px;
     vertical-align: middle;
   }
-
-  #lettering{
+  #lettering {
     display: block;
     opacity: 0;
     position: absolute;
     width: 100%;
-    top: calc(40% + 150px);
+    top: calc(190%);
     /* left: 50%; */
     /* margin-left: -300px; */
     text-align: center;
-    color: @standard-red;
+    color: #cc071e;
   }
-
-  #nav-arrow{
+  #nav-arrow {
     display: block;
     opacity: 0;
     position: absolute;
@@ -60,12 +50,10 @@
     margin-left: -15px;
     vertical-align: middle;
   }
-
-  #nav-arrow:hover{
+  #nav-arrow:hover {
     cursor: pointer;
   }
-
-  .wrapper-box{
+  .wrapper-box {
     display: flex;
     visibility: hidden;
     justify-content: space-between;
@@ -73,8 +61,7 @@
     margin-left: 15%;
     width: 70%;
   }
-
-  .news-content-box{
+  .news-content-box {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -84,30 +71,24 @@
     padding: 20px;
     border-width: 1px;
     border-style: solid;
-    border-color: @standard-red;
+    border-color: #cc071e;
   }
-
-  .news-img-container{
+  .news-img-container {
     height: 30%;
   }
-
-  .news-img{
+  .news-img {
     width: 100%;
   }
-
-  .news-headline-container{
+  .news-headline-container {
     width: 100%;
     text-align: center;
   }
-
-  .news-headline{
+  .news-headline {
     width: 100%;
     font-size: 30px;
-    color: @standard-blue;
+    color: #003871;
   }
-
-  .news-text-box{
+  .news-text-box {
     height: 40%;
   }
-
 }
