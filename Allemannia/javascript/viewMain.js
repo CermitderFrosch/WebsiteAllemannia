@@ -17,6 +17,7 @@ class viewMain{
 
     constructor(){
         this.lettering         = 'RUDER-CLUB "ALLEMANNIA von 18866" HAMBURG';
+		this.logoHeight        = 120;
 		this.marginLinesActive = false;
 		this.calcBrowserSize();
     }
@@ -36,49 +37,61 @@ class viewMain{
 	}
 	
 	calcBrowserSize(){
-		this.windowWidth  = window.innerWidth  || document.documentElement.clientWidth  || document.body.clientWidth;
-		this.windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+		this.windowWidth  = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
+		this.windowHeight = document.documentElement.clientHeight || document.body.clientHeight ||window.innerHeight;
 	}
 	
 	renderStartScreen(){
 		setTimeout(function(){
 			$("svg polyline").animate({opacity: 1}, 1000);
-			$("#emblem-main").animate({opacity: 1}, 1500);
-			$("#lettering").animate({opacity: 1}, 1500);
-			$("#nav-arrow").animate({opacity: 1}, 1500);
+			setTimeout(function(){
+				$("#emblem-main").animate({opacity: 1}, 1500);
+				$("#lettering").animate({opacity: 1}, 1500);
+				$("#nav-arrow").animate({opacity: 1}, 1500);
+			},500);
 		},500);
 	}
 	
 	
-	/* Calculate red lines on each side */
+	/* Calculate red lines on top and at the bottom */
 	calcMarginLines(){
 		
-		let leftOneX   = Math.round(this.windowWidth*0.1);
-		let leftOneY   = Math.round(this.windowHeight*0.2);
-		let leftTwoX   = Math.round(this.windowWidth*0.1);
-		let leftTwoY   = Math.round(this.windowHeight*0.8);
-		let leftThreeY = Math.round(this.windowHeight);
+		let leftOneX   = Math.round(this.windowWidth*0.45);
+		let leftOneY   = Math.round(this.windowHeight*0.5  - this.logoHeight  - 100);
+		let leftTwoX   = Math.round(this.windowWidth*0.55);
+		let leftTwoY   = Math.round(this.windowHeight*0.5  - this.logoHeight  - 100);
 		
-		let rightZeroX   = Math.round(this.windowWidth);
-		let rightZeroY   = 0;
-		let rightOneX    = Math.round(this.windowWidth*0.9);
-		let rightOneY    = Math.round(this.windowHeight*0.2);
-		let rightTwoX    = Math.round(this.windowWidth*0.9);
-		let rightTwoY    = Math.round(this.windowHeight*0.8);
-		let rightThreeX  = Math.round(this.windowWidth);
-		let rightThreeY  = Math.round(this.windowHeight);
+		let leftThreeX   = Math.round(this.windowWidth*0.45);		
+		let leftThreeY = Math.round(this.windowHeight*0.5 + this.logoHeight  + 100);
+		let leftFourX   = Math.round(this.windowWidth*0.55);
+		let leftFourY   = Math.round(this.windowHeight*0.5 + this.logoHeight  + 100);
 		
-		let lineLeft = "<polyline points=\"0,0 "+ leftOneX +","+ leftOneY +" "+ leftTwoX +","+ leftTwoY +" 0,"+ leftThreeY +"\" style=\"fill:none;stroke:#cc071e;stroke-width:1;opacity:0.0\" />";
+		if(leftTwoX - leftOneX <= 270){
+			leftOneX = Math.round(this.windowWidth*0.5 - 135);
+			leftTwoX = Math.round(this.windowWidth*0.5 + 135);
+			leftThreeX = Math.round(this.windowWidth*0.5 - 135);
+			leftFourX = Math.round(this.windowWidth*0.5 + 135);
+		}
 		
-		let lineRight = "<polyline points=\""+ rightZeroX +","+ rightZeroY +" "+ rightOneX +","+ rightOneY +" "+ rightTwoX +","+ rightTwoY +" "+ rightThreeX +","+ rightThreeY +"\" style=\"fill:none;stroke:#cc071e;stroke-width:1;opacity:0.0\" />";
+		let lineL = "";
+		let lineR = "";
 		
-		this.setMarginLines(lineLeft, lineRight);
+		if(!this.marginLinesActive){
+			lineL     = "<polyline points=\""+ leftOneX +","+ leftOneY +" "+ leftTwoX +","+ leftTwoY +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:0.0\" />";
+			lineR     = "<polyline points=\""+ leftThreeX +","+ leftThreeY +" "+ leftFourX +","+ leftFourY +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:0.0\" />";
+		}
+		else{
+			lineL     = "<polyline points=\""+ leftOneX +","+ leftOneY +" "+ leftTwoX +","+ leftTwoY +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:1\" />";
+			lineR     = "<polyline points=\""+ leftThreeX +","+ leftThreeY +" "+ leftFourX +","+ leftFourY +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:1\" />";
+		}	
+		
+		this.setMarginLines(lineL,lineR);
 	}
 	
-	setMarginLines(lineLeft, lineRight){
+	setMarginLines(lineL, lineR){
 		document.getElementById("marginLines").setAttribute("width", this.windowWidth);
 		document.getElementById("marginLines").setAttribute("height", this.windowHeight);
-		document.getElementById("marginLines").innerHTML = lineLeft + lineRight;
+		document.getElementById("marginLines").innerHTML = lineL + lineR;
 		
 		this.marginLinesActive = true;
 	}
