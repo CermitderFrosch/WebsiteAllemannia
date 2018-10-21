@@ -16,15 +16,15 @@ $(window).resize(function(){
 class viewMain{
 
     constructor(){
-        this.lettering         = 'RUDER-CLUB "ALLEMANNIA von 18866" HAMBURG';
+        this.lettering         = 'RUDER-CLUB </br>"ALLEMANNIA von 1866"</br> HAMBURG';
 		this.logoHeight        = 120;
-		this.marginLinesActive = false;
+		this.logoLinesActive   = false;
+		
 		this.calcBrowserSize();
+		this.calcLogoCoordinates();
     }
 
     init(){
-        document.getElementById("lettering").innerHTML = this.lettering;
-		//this.calcMarginLines();
 		this.renderStartScreen();
     }
 	
@@ -32,7 +32,7 @@ class viewMain{
 		this.calcBrowserSize();
 		
 		if(this.marginLinesActive){
-			this.calcMarginLines();
+			this.calcLogoCoordinates();
 		}
 	}
 	
@@ -42,58 +42,62 @@ class viewMain{
 	}
 	
 	renderStartScreen(){
-		setTimeout(function(){
-			$("svg polyline").animate({opacity: 1}, 1000);
-			setTimeout(function(){
-				$("#emblem-main").animate({opacity: 1}, 1500);
-				$("#lettering").animate({opacity: 1}, 1500);
-				$("#nav-arrow").animate({opacity: 1}, 1500);
-			},500);
-		},500);
+		this.setLogoLines();
+		this.renderLogo();
 	}
 	
+	renderLogo(){
+		let svg       = document.getElementById("logoLines");
+		let lettering = document.getElementById("lettering");
+		
+		let imgEmblem = document.createElement('img');
+		let imgNav    = document.createElement('img');
+		
+		imgEmblem.setAttribute("id","emblem-main");
+		imgEmblem.setAttribute("src","../images/Wappen.jpg");
+		
+		imgNav.setAttribute("id","nav-arrow");
+		imgNav.setAttribute("src","../images/doubleDownNew.png");
+		
+		svg.parentNode.insertBefore(imgEmblem, svg.nextSibling);
+		lettering.parentNode.insertBefore(imgNav, lettering.nextSibling);
+		
+		document.getElementById("lettering").innerHTML = this.lettering;
+		
+		this.animateLogo();
+	}
+	
+	animateLogo(){
+		setTimeout(function(){
+			$("#emblem-main").animate({opacity: 1}, 1500);
+			$("#lettering").animate({opacity: 1}, 1500);
+			$("#nav-arrow").animate({opacity: 1}, 1500);
+		},500); 
+	}
 	
 	/* Calculate red lines on top and at the bottom */
-	calcMarginLines(){
+	calcLogoCoordinates(){
 		
-		let leftOneX   = Math.round(this.windowWidth*0.45);
-		let leftOneY   = Math.round(this.windowHeight*0.5  - this.logoHeight  - 100);
-		let leftTwoX   = Math.round(this.windowWidth*0.55);
-		let leftTwoY   = Math.round(this.windowHeight*0.5  - this.logoHeight  - 100);
+		/* Calculate y-axis position for top and bottom line */
+		let yT = this.windowHeight*0.5 - this.logoHeight - 50;
+		let yB = this.windowHeight*0.5 + this.logoHeight + 50;
 		
-		let leftThreeX   = Math.round(this.windowWidth*0.45);		
-		let leftThreeY = Math.round(this.windowHeight*0.5 + this.logoHeight  + 100);
-		let leftFourX   = Math.round(this.windowWidth*0.55);
-		let leftFourY   = Math.round(this.windowHeight*0.5 + this.logoHeight  + 100);
+		/* Calculate x-axis position for top and bottom line */
+		let x1 = this.windowWidth*0.5 - 150;
+		let x2 = this.windowWidth*0.5 + 150;
 		
-		if(leftTwoX - leftOneX <= 270){
-			leftOneX = Math.round(this.windowWidth*0.5 - 135);
-			leftTwoX = Math.round(this.windowWidth*0.5 + 135);
-			leftThreeX = Math.round(this.windowWidth*0.5 - 135);
-			leftFourX = Math.round(this.windowWidth*0.5 + 135);
-		}
+		/* Calculate points */
+		this.lT = ""+ x1 +","+ yT + " "+ x2 + ","+ yT +"";
+		this.lB = ""+ x1 +","+ yB + " "+ x2 + ","+ yB +"";
 		
-		let lineL = "";
-		let lineR = "";
-		
-		if(!this.marginLinesActive){
-			lineL     = "<polyline points=\""+ leftOneX +","+ leftOneY +" "+ leftTwoX +","+ leftTwoY +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:0.0\" />";
-			lineR     = "<polyline points=\""+ leftThreeX +","+ leftThreeY +" "+ leftFourX +","+ leftFourY +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:0.0\" />";
-		}
-		else{
-			lineL     = "<polyline points=\""+ leftOneX +","+ leftOneY +" "+ leftTwoX +","+ leftTwoY +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:1\" />";
-			lineR     = "<polyline points=\""+ leftThreeX +","+ leftThreeY +" "+ leftFourX +","+ leftFourY +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:1\" />";
-		}	
-		
-		this.setMarginLines(lineL,lineR);
 	}
 	
-	setMarginLines(lineL, lineR){
-		document.getElementById("marginLines").setAttribute("width", this.windowWidth);
-		document.getElementById("marginLines").setAttribute("height", this.windowHeight);
-		document.getElementById("marginLines").innerHTML = lineL + lineR;
+	setLogoLines(){
+		let lineT = "<polyline id=\"lineTop\" points=\""+ this.lT +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:1\"></polyline>";
+	  	let lineB = "<polyline id=\"lineBottom\" points=\""+ this.lB +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:1\"></polyline>";
+		document.getElementById("logoLines").innerHTML = lineT + lineB;
 		
-		this.marginLinesActive = true;
+		this.logoLinesActive = true;
 	}
 
 }
