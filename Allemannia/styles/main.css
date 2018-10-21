@@ -18,6 +18,26 @@
     width: 100%;
     border-color: #f9b200;
   }
+  #lineTop {
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+    animation: lineTop 0.5s linear forwards;
+  }
+  @keyframes lineTop {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  #lineBottom {
+    stroke-dasharray: 280;
+    stroke-dashoffset: -280;
+    animation: lineBottom 0.5s linear forwards;
+  }
+  @keyframes lineBottom {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
   #emblem-main {
     display: block;
     opacity: 0;

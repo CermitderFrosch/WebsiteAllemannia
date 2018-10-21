@@ -16,7 +16,10 @@
   <body>
 
     <!-- Elements for pagestart -->
-	<svg id="marginLines"></svg>  
+	<svg id="marginLines" height="2000" width="3000">
+	  <polyline id="lineTop" points="1110,449 1390,449" style="fill:none;stroke:#cc071e;stroke-width:2;opacity:1"></polyline>
+	  <polyline id="lineBottom" points="1110,889 1390,889" style="fill:none;stroke:#cc071e;stroke-width:2;opacity:1"></polyline>
+	</svg>  
     <img id="emblem-main" src="../images/Wappen.jpg">
     <div id="lettering"></div>
     <img id="nav-arrow" src="../images/doubleDownNew.png">

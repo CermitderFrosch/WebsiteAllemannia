@@ -24,7 +24,7 @@ class viewMain{
 
     init(){
         document.getElementById("lettering").innerHTML = this.lettering;
-		this.calcMarginLines();
+		//this.calcMarginLines();
 		this.renderStartScreen();
     }
 	
