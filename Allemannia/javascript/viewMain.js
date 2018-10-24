@@ -31,9 +31,15 @@ class viewMain{
 	resize(){
 		this.calcBrowserSize();
 		
-		if(this.marginLinesActive){
+		if(this.logoLinesActive){
 			this.calcLogoCoordinates();
+			this.resizeLogoLines();
 		}
+	}
+	
+	resizeLogoLines(){
+		document.getElementById("lineTop").setAttribute("points", this.lT);
+		document.getElementById("lineBottom").setAttribute("points", this.lB);
 	}
 	
 	calcBrowserSize(){
@@ -47,6 +53,7 @@ class viewMain{
 	}
 	
 	renderLogo(){
+		let that = this;
 		let svg       = document.getElementById("logoLines");
 		let lettering = document.getElementById("lettering");
 		
@@ -65,6 +72,10 @@ class viewMain{
 		document.getElementById("lettering").innerHTML = this.lettering;
 		
 		this.animateLogo();
+		
+		imgNav.addEventListener("click", function(){
+			that.navStart();
+		});
 	}
 	
 	animateLogo(){
@@ -93,11 +104,20 @@ class viewMain{
 	}
 	
 	setLogoLines(){
+		
 		let lineT = "<polyline id=\"lineTop\" points=\""+ this.lT +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:1\"></polyline>";
 	  	let lineB = "<polyline id=\"lineBottom\" points=\""+ this.lB +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:1\"></polyline>";
 		document.getElementById("logoLines").innerHTML = lineT + lineB;
 		
 		this.logoLinesActive = true;
+	}
+	
+	/*Handle click on navigation arrow on startpage */
+	navStart(){
+		document.getElementById("emblem-main").setAttribute("class", "startNav");
+		document.getElementById("lettering").setAttribute("class", "startNav");
+		document.getElementById("lineTop").setAttribute("class", "startNav");
+		document.getElementById("lineBottom").setAttribute("class", "startNav");
 	}
 
 }

@@ -70,9 +70,7 @@
     opacity: 0;
     position: absolute;
     width: 100%;
-    top: calc(40% + 150px);
-    /* left: 50%; */
-    /* margin-left: -300px; */
+    top: calc(50% + 30px);
     text-align: center;
     color: @standard-red;
   }
@@ -91,6 +89,16 @@
   #nav-arrow:hover{
     cursor: pointer;
   }
+	
+	.startNav{
+		animation: startNav 0.5s linear forwards;
+	}
+	
+	@keyframes startNav{
+		to{
+			top: -20%;
+		}
+	}
 
   .wrapper-box{
     display: none;
