@@ -16,7 +16,7 @@ $(window).resize(function(){
 class viewMain{
 
     constructor(){
-        this.lettering         = 'RUDER-CLUB </br>"ALLEMANNIA von 1866"</br> HAMBURG';
+    this.lettering         = 'RUDER-CLUB </br>"ALLEMANNIA von 1866"</br> HAMBURG';
 		this.logoHeight        = 120;
 		this.logoLinesActive   = false;
 		
@@ -53,7 +53,7 @@ class viewMain{
 	}
 	
 	renderLogo(){
-		let that = this;
+		let that      = this;
 		let svg       = document.getElementById("logoLines");
 		let lettering = document.getElementById("lettering");
 		
@@ -77,7 +77,7 @@ class viewMain{
 			that.navStart();
 		});
 	}
-	
+
 	animateLogo(){
 		setTimeout(function(){
 			$("#emblem-main").animate({opacity: 1}, 1500);
@@ -114,10 +114,11 @@ class viewMain{
 	
 	/*Handle click on navigation arrow on startpage */
 	navStart(){
-		document.getElementById("emblem-main").setAttribute("class", "startNav");
-		document.getElementById("lettering").setAttribute("class", "startNav");
-		document.getElementById("lineTop").setAttribute("class", "startNav");
-		document.getElementById("lineBottom").setAttribute("class", "startNav");
+		document.getElementById("logoLines").style.marginTop = "-2000px";
+		document.getElementById("emblem-main").style.marginTop = "-2000px";
+		document.getElementById("lettering").style.marginTop = "-2000px";
+		/*document.getElementById("nav-arrow").style.bottom = "200px";*/
+		
 	}
 
 }

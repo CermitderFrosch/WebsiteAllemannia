@@ -14,17 +14,20 @@
 
   </head>
   <body>
+	  
+		<div id="mainContainer">
+			<!-- Elements for pagestart -->
+			<svg id="logoLines" height="100%" width="100%"></svg>  
+			<div id="lettering"></div>
 
-    <!-- Elements for pagestart -->
-	<svg id="logoLines" height="100%" width="100%"></svg>  
-    <div id="lettering"></div>
+		</div>
 
-
+	
     <!-- Main content -->
-    <div id="menu">
+    <!--<div id="menu">
 
     </div>
-	<!--
+	
     <div class="wrapper-box">
       <div class="news-content-box">
 

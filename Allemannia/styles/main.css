@@ -16,6 +16,10 @@
     height: 100%;
     width: 100%;
   }
+  #mainContainer {
+    height: 100%;
+    width: 100%;
+  }
   hr {
     width: 100%;
     border-color: #f9b200;
@@ -57,9 +61,7 @@
     opacity: 0;
     position: absolute;
     width: 100%;
-    top: calc(190%);
-    /* left: 50%; */
-    /* margin-left: -300px; */
+    top: calc(80%);
     text-align: center;
     color: #cc071e;
   }

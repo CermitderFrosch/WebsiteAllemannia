@@ -22,12 +22,17 @@
 	height: 100%;
 	width: 100%;
   }
-
+	
+	#mainContainer{
+		height: 100%;
+		width: 100%;
+	}
+	
   hr{
     width: 100%;
     border-color: @standard-yellow;
   }
-
+		
 	#lineTop{
 		stroke-dasharray: 300;
 		stroke-dashoffset: 300;
@@ -89,16 +94,6 @@
   #nav-arrow:hover{
     cursor: pointer;
   }
-	
-	.startNav{
-		animation: startNav 0.5s linear forwards;
-	}
-	
-	@keyframes startNav{
-		to{
-			top: -20%;
-		}
-	}
 
   .wrapper-box{
     display: none;
