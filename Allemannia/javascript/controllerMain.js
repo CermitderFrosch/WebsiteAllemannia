@@ -17,7 +17,7 @@ $(document).ready(function(){
 });
 
 $(window).resize(function(){
-	this.calcBrowserSize();
+	mainController.calcBrowserSize();
 	mainView.resize();
 });
 
