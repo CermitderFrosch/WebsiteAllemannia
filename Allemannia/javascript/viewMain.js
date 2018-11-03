@@ -1,35 +1,22 @@
 "use strict";
 
-var viewStart = "";
-
-$(document).ready(function(){
-
-    viewStart = new viewMain();
-
-    viewStart.init();
-});
-
-$(window).resize(function(){
-	viewStart.resize();
-});
-
 class viewMain{
 
-    constructor(){
-    this.lettering         = 'RUDER-CLUB </br>"ALLEMANNIA von 1866"</br> HAMBURG';
+	constructor(controller){
+
+		this.controller        = controller;
+		this.lettering         = 'RUDER-CLUB </br>"ALLEMANNIA von 1866"</br> HAMBURG';
 		this.logoHeight        = 120;
 		this.logoLinesActive   = false;
-		
-		this.calcBrowserSize();
-		this.calcLogoCoordinates();
-    }
 
-    init(){
+		this.calcLogoCoordinates();
+	}
+
+	init(){
 		this.renderStartScreen();
-    }
+	}
 	
 	resize(){
-		this.calcBrowserSize();
 		
 		if(this.logoLinesActive){
 			this.calcLogoCoordinates();
@@ -40,11 +27,6 @@ class viewMain{
 	resizeLogoLines(){
 		document.getElementById("lineTop").setAttribute("points", this.lT);
 		document.getElementById("lineBottom").setAttribute("points", this.lB);
-	}
-	
-	calcBrowserSize(){
-		this.windowWidth  = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
-		this.windowHeight = document.documentElement.clientHeight || document.body.clientHeight ||window.innerHeight;
 	}
 	
 	renderStartScreen(){
@@ -90,18 +72,20 @@ class viewMain{
 	calcLogoCoordinates(){
 		
 		/* Calculate y-axis position for top and bottom line */
-		let yT = this.windowHeight*0.5 - this.logoHeight - 50;
-		let yB = this.windowHeight*0.5 + this.logoHeight + 50;
+		let yT = this.controller.windowHeight*0.5 - this.logoHeight - 50;
+		let yB = this.controller.windowHeight*0.5 + this.logoHeight + 50;
 		
 		/* Calculate x-axis position for top and bottom line */
-		let x1 = this.windowWidth*0.5 - 150;
-		let x2 = this.windowWidth*0.5 + 150;
+		let x1 = this.controller.windowWidth*0.5 - 150;
+		let x2 = this.controller.windowWidth*0.5 + 150;
 		
 		/* Calculate points */
 		this.lT = ""+ x1 +","+ yT + " "+ x2 + ","+ yT +"";
 		this.lB = ""+ x1 +","+ yB + " "+ x2 + ","+ yB +"";
 		
 	}
+	
+	/* Setter methods */
 	
 	setLogoLines(){
 		
@@ -112,12 +96,30 @@ class viewMain{
 		this.logoLinesActive = true;
 	}
 	
+	setContent(content){
+		
+		switch(content){
+			case "news":
+				//make foreach loop and set screen content
+				break;
+		}
+		
+	}
+	
 	/*Handle click on navigation arrow on startpage */
 	navStart(){
-		document.getElementById("logoLines").style.marginTop = "-2000px";
-		document.getElementById("emblem-main").style.marginTop = "-2000px";
-		document.getElementById("lettering").style.marginTop = "-2000px";
-		/*document.getElementById("nav-arrow").style.bottom = "200px";*/
+		let that = this;
+		
+		document.getElementById("logoLines").classList.add('start-screen-vert-translate');
+		document.getElementById("emblem-main").classList.add('start-screen-vert-translate');
+		document.getElementById("lettering").classList.add('start-screen-vert-translate');
+		document.getElementById("nav-arrow").classList.add('nav-arrow-clicked');
+		document.getElementById("nav-arrow").style.opacity = "0";
+		
+		setTimeout(function(){
+			document.getElementById("mainContainer").innerHTML = "";
+			that.controller.getContent("news");
+		},1000);
 		
 	}
 

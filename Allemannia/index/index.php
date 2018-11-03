@@ -36,14 +36,12 @@
         </div>
 
         <div class="news-headline-container">
-          <span class="news-headline">Racing</span>
+          <span class="news-headline"></span>
           <hr>
         </div>
 
         <div class="news-text-box">
-          Try-hard irony man bun vegan, vinyl tumblr thundercats squid drinking vinegar mustache deserunt palo santo. Nulla pour-over prism, pabst pok pok sed shoreditch hell of in glossier bushwick.
-          Leggings keffiyeh post-ironic hammock +1 waistcoat, bicycle rights excepteur la croix biodiesel.
-          Officia ea tumblr commodo, activated charcoal banh mi migas waistcoat nisi. Fingerstache mustache cornhole veniam microdosing kickstarter.
+          
         </div>
       </div>
 
@@ -54,14 +52,12 @@
         </div>
 
         <div class="news-headline-container">
-          <span class="news-headline">Masters</span>
+          <span class="news-headline"></span>
           <hr>
         </div>
 
         <div class="news-text-box">
-          Etsy raclette eiusmod, viral bushwick qui pickled. Duis cloud bread in, hexagon cliche plaid aute gluten-free whatever street art everyday carry heirloom.
-          Schlitz ramps cliche, ut messenger bag irure artisan lomo viral locavore chartreuse consectetur. Occaecat snackwave brunch anim. Aesthetic voluptate labore deep v truffaut, pok pok hell of everyday carry before they sold out vinyl 90's fashion axe.
-          Four dollar toast mumblecore subway tile qui pour-over sed, meggings XOXO coloring book cliche post-ironic sustainable.
+          
         </div>
       </div>
 
@@ -77,8 +73,7 @@
         </div>
 
         <div class="news-text-box">
-          Tempor readymade sriracha ennui dolore asymmetrical lumbersexual small batch velit deep v lorem tousled pour-over. Tumeric tilde wayfarers sustainable, qui shoreditch palo santo deep v XOXO.
-          Gastropub seitan tacos gochujang, af beard kitsch lumbersexual helvetica wayfarers umami ullamco unicorn fingerstache. Authentic dolore vinyl kombucha. Green juice pop-up meh ut.
+          
         </div>
       </div>
     </div>
@@ -92,6 +87,12 @@
 
     <!-- MVC:Main View -->
     <script type="text/javascript" src="../javascript/viewMain.js"></script>
+		
+		<!-- MVC:Main Model -->
+    <script type="text/javascript" src="../javascript/modelMain.js"></script>
+		
+		<!-- MVC:Main Controller -->
+    <script type="text/javascript" src="../javascript/controllerMain.js"></script>
 
     <!-- Popper (Required for Bootstrap) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
