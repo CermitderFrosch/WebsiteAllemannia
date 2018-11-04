@@ -26,57 +26,7 @@
     <!-- Main content -->
     <!--<div id="menu">
 
-    </div>
-	
-    <div class="wrapper-box">
-      <div class="news-content-box">
-
-        <div class="news-img-container">
-          <img class="news-img" src="../images/"></img>
-        </div>
-
-        <div class="news-headline-container">
-          <span class="news-headline"></span>
-          <hr>
-        </div>
-
-        <div class="news-text-box">
-          
-        </div>
-      </div>
-
-      <div class="news-content-box">
-
-        <div class="news-img-container">
-          <img class="news-img" src="../images/"></img>
-        </div>
-
-        <div class="news-headline-container">
-          <span class="news-headline"></span>
-          <hr>
-        </div>
-
-        <div class="news-text-box">
-          
-        </div>
-      </div>
-
-      <div class="news-content-box">
-
-        <div class="news-img-container">
-          <img class="news-img" src="../images/"></img>
-        </div>
-
-        <div class="news-headline-container">
-          <span class="news-headline"></span>
-          <hr>
-        </div>
-
-        <div class="news-text-box">
-          
-        </div>
-      </div>
-    </div>
+		</div>
 	-->
     <!-- Javascript -->
     <!-- Less -->

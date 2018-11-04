@@ -5,20 +5,12 @@ var mainView       = '';
 var mainModel      = '';
 
 $(document).ready(function(){
-
 		mainController = new controllerMain();
-    mainView       = new viewMain(mainController);
-		mainModel			 = new modelMain(mainController);
-	
-		mainController.setView(mainView);
-		mainController.setModel(mainModel);
-
-    mainView.init();
 });
 
 $(window).resize(function(){
 	mainController.calcBrowserSize();
-	mainView.resize();
+	mainController.view.resize();
 });
 
 class controllerMain{
@@ -26,6 +18,14 @@ class controllerMain{
 	constructor(){
 		
 		this.calcBrowserSize();
+		
+		let mainModel			 = new modelMain(this);
+		let mainView       = new viewMain(this,mainModel);
+		
+		this.setModel(mainModel);
+		this.setView(mainView);
+
+    this.view.init();
 		
 	}
 	

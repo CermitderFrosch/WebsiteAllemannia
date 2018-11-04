@@ -22,7 +22,7 @@
   }
   hr {
     width: 100%;
-    border-color: #f9b200;
+    border-color: #cc071e;
   }
   #lineTop {
     stroke-dasharray: 300;
@@ -95,10 +95,11 @@
     margin-top: -100%;
   }
   .wrapper-box {
-    display: none;
-    visibility: hidden;
+    /* display: none; */
+    /* visibility: hidden; */
+    position: absolute;
     justify-content: space-between;
-    margin-top: 70%;
+    margin-top: 100px;
     margin-left: 15%;
     width: 70%;
   }
@@ -110,9 +111,7 @@
     width: 400px;
     height: 800px;
     padding: 20px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #cc071e;
+    margin: 10px;
   }
   .news-img-container {
     height: 30%;

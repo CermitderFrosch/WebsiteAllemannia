@@ -2,9 +2,10 @@
 
 class viewMain{
 
-	constructor(controller){
+	constructor(controller,model){
 
 		this.controller        = controller;
+		this.model 					   = model;
 		this.lettering         = 'RUDER-CLUB </br>"ALLEMANNIA von 1866"</br> HAMBURG';
 		this.logoHeight        = 120;
 		this.logoLinesActive   = false;
@@ -86,6 +87,16 @@ class viewMain{
 	}
 	
 	/* Setter methods */
+	/* main setter method for content */
+	setContent(type){
+		
+		switch(type){
+			case "news":
+				this.setNews();
+				break;
+		}
+		
+	}
 	
 	setLogoLines(){
 		
@@ -96,17 +107,36 @@ class viewMain{
 		this.logoLinesActive = true;
 	}
 	
-	setContent(content){
+	//set content for news-area
+	setNews(){
+		let content = "<div class=\"wrapper-box\">";
 		
-		switch(content){
-			case "news":
-				//make foreach loop and set screen content
-				break;
-		}
+		this.model.news.forEach(function(val){
+			content += "<div class=\"news-content-box\">";
+			//Image
+			content += "<div class=\"news-img-container\">";
+			content += "<img class=\"news-img\" src=\"../images/"+ val[2] +"\"></img>";
+			content += "</div>";
+			//headline
+			content += "<div class=\"news-headline-container\">";
+			content += "<span class=\"news-headline\">"+ val[0] +"</span><hr>";
+			content += "</div>";
+			//text
+			content += "<div class=\"news-text-box\">";
+			content += val[1];
+			content += "</div>";
+			
+			content += "</div>";
+			
+		});
 		
+		content += "</div>";
+		
+		document.getElementById("mainContainer").innerHTML = content;
 	}
 	
-	/*Handle click on navigation arrow on startpage */
+	/* Navigation methods */
+	/* Handle click on navigation arrow on startpage */
 	navStart(){
 		let that = this;
 		
@@ -115,6 +145,8 @@ class viewMain{
 		document.getElementById("lettering").classList.add('start-screen-vert-translate');
 		document.getElementById("nav-arrow").classList.add('nav-arrow-clicked');
 		document.getElementById("nav-arrow").style.opacity = "0";
+		
+		this.logoLinesActive = false;
 		
 		setTimeout(function(){
 			document.getElementById("mainContainer").innerHTML = "";

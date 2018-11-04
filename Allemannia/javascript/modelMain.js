@@ -24,7 +24,7 @@ class modelMain{
 		
 	}
 	
-	//return data (and load it if not already done)
+	//load data (and load it if not already done)
 	getContent(content){
 		
 		switch(content){
@@ -33,9 +33,7 @@ class modelMain{
 				if(this.news.length === 0){
 					this.loadContent("news");
 				}
-				else{
-					this.controller.setContent("news");
-				}
+				this.controller.setContent("news");
 				break;
 		}
 		
