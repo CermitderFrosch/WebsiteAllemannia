@@ -44,14 +44,12 @@ class controllerMain{
 	
 	//Load content from model
 	getContent(content){
-		this.model.getContent(content);
+		this.model.getContent(content,0,"setContent");
 	}
 	
 	//advise view to set content
 	setContent(content){
 		this.view.setContent(content);
 	}
-	
-	contentLoaded(){}
 	
 }

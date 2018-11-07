@@ -88,9 +88,9 @@ class viewMain{
 	
 	/* Setter methods */
 	/* main setter method for content */
-	setContent(type){
+	setContent(content){
 		
-		switch(type){
+		switch(content){
 			case "news":
 				this.setNews();
 				break;
@@ -109,8 +109,15 @@ class viewMain{
 	
 	//set content for news-area
 	setNews(){
-		let content = "<div class=\"wrapper-box\">";
-		
+		let content = "<div id=\"menu\"><ul>";
+		 content += "<li>News</li>";
+		 content += "<li>Club</li>";
+		 content += "<li>Racing</li>";
+		 content += "<li>HSBA</li>";
+		 content += "<li>Gallery</li>";
+		 content += "</ul></div>";
+		 content += "<div class=\"wrapper-box\">";
+
 		this.model.news.forEach(function(val){
 			content += "<div class=\"news-content-box\">";
 			//Image

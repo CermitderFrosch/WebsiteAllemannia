@@ -24,10 +24,8 @@
 
 	
     <!-- Main content -->
-    <!--<div id="menu">
+    
 
-		</div>
-	-->
     <!-- Javascript -->
     <!-- Less -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>

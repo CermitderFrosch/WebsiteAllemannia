@@ -19,25 +19,23 @@ class modelMain{
 		];
 	}
 	
-	//Load content
-	loadContent(){
-		
-	}
-	
-	//load data (and load it if not already done)
-	getContent(content){
+	//return data (and load it if not already done)
+	getContent(content,refresh,callback){
 		
 		switch(content){
 			case "news":
 				//load news content
-				if(this.news.length === 0){
+				if(this.news.length === 0 || refresh === 1){
 					this.loadContent("news");
 				}
-				this.controller.setContent("news");
+				this.controller[callback]("news");
 				break;
 		}
+	}
+	
+	//Load content from backend
+	loadContent(){
 		
-		this.controller.contentLoaded(content);
 	}
 	
 }
