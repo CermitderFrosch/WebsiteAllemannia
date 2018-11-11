@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 class viewMain{
 
@@ -26,8 +26,8 @@ class viewMain{
 	}
 	
 	resizeLogoLines(){
-		document.getElementById("lineTop").setAttribute("points", this.lT);
-		document.getElementById("lineBottom").setAttribute("points", this.lB);
+		document.getElementById('lineTop').setAttribute('points', this.lT);
+		document.getElementById('lineBottom').setAttribute('points', this.lB);
 	}
 	
 	renderStartScreen(){
@@ -37,35 +37,35 @@ class viewMain{
 	
 	renderLogo(){
 		let that      = this;
-		let svg       = document.getElementById("logoLines");
-		let lettering = document.getElementById("lettering");
+		let svg       = document.getElementById('logoLines');
+		let lettering = document.getElementById('lettering');
 		
 		let imgEmblem = document.createElement('img');
 		let imgNav    = document.createElement('img');
 		
-		imgEmblem.setAttribute("id","emblem-main");
-		imgEmblem.setAttribute("src","../images/Wappen.jpg");
+		imgEmblem.setAttribute('id','emblem-main');
+		imgEmblem.setAttribute('src','../images/Wappen.jpg');
 		
-		imgNav.setAttribute("id","nav-arrow");
-		imgNav.setAttribute("src","../images/doubleDownNew.png");
+		imgNav.setAttribute('id','nav-arrow');
+		imgNav.setAttribute('src','../images/doubleDownNew.png');
 		
 		svg.parentNode.insertBefore(imgEmblem, svg.nextSibling);
 		lettering.parentNode.insertBefore(imgNav, lettering.nextSibling);
 		
-		document.getElementById("lettering").innerHTML = this.lettering;
+		document.getElementById('lettering').innerHTML = this.lettering;
 		
 		this.animateLogo();
 		
-		imgNav.addEventListener("click", function(){
+		imgNav.addEventListener('click', function(){
 			that.navStart();
 		});
 	}
 
 	animateLogo(){
 		setTimeout(function(){
-			$("#emblem-main").animate({opacity: 1}, 1500);
-			$("#lettering").animate({opacity: 1}, 1500);
-			$("#nav-arrow").animate({opacity: 1}, 1500);
+			$('#emblem-main').animate({opacity: 1}, 1500);
+			$('#lettering').animate({opacity: 1}, 1500);
+			$('#nav-arrow').animate({opacity: 1}, 1500);
 		},500); 
 	}
 	
@@ -91,7 +91,7 @@ class viewMain{
 	setContent(content){
 		
 		switch(content){
-			case "news":
+			case 'news':
 				this.setNews();
 				break;
 		}
@@ -102,7 +102,7 @@ class viewMain{
 		
 		let lineT = "<polyline id=\"lineTop\" points=\""+ this.lT +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:1\"></polyline>";
 	  	let lineB = "<polyline id=\"lineBottom\" points=\""+ this.lB +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:1\"></polyline>";
-		document.getElementById("logoLines").innerHTML = lineT + lineB;
+		document.getElementById('logoLines').innerHTML = lineT + lineB;
 		
 		this.logoLinesActive = true;
 	}
@@ -110,13 +110,13 @@ class viewMain{
 	//set content for news-area
 	setNews(){
 		let content = "<div id=\"menu\"><ul>";
-		 content += "<li>News</li>";
-		 content += "<li>Club</li>";
-		 content += "<li>Racing</li>";
-		 content += "<li>HSBA</li>";
-		 content += "<li>Gallery</li>";
-		 content += "</ul></div>";
-		 content += "<div class=\"wrapper-box\">";
+		   content += "<li>News</li>";
+		   content += "<li>Club</li>";
+		   content += "<li>Racing</li>";
+		   content += "<li>HSBA</li>";
+		   content += "<li>Gallery</li>";
+		   content += "</ul></div>";
+		   content += "<div class=\"wrapper-box\" style=\"margin-top:"+ this.controller.windowHeight * 0.1 +"px\">";
 
 		this.model.news.forEach(function(val){
 			content += "<div class=\"news-content-box\">";
@@ -139,7 +139,18 @@ class viewMain{
 		
 		content += "</div>";
 		
-		document.getElementById("mainContainer").innerHTML = content;
+		document.getElementById('mainContainer').innerHTML = content;
+		
+		setTimeout(function(){
+			let news = document.getElementsByClassName('news-content-box');
+		
+			for(let i = 0; i < news.length; i++){
+				setTimeout(function(){
+					news[i].classList.add('news-content-box-displayed');
+					}, i * 200);
+			}
+		},200);
+		
 	}
 	
 	/* Navigation methods */
@@ -147,17 +158,17 @@ class viewMain{
 	navStart(){
 		let that = this;
 		
-		document.getElementById("logoLines").classList.add('start-screen-vert-translate');
-		document.getElementById("emblem-main").classList.add('start-screen-vert-translate');
-		document.getElementById("lettering").classList.add('start-screen-vert-translate');
-		document.getElementById("nav-arrow").classList.add('nav-arrow-clicked');
-		document.getElementById("nav-arrow").style.opacity = "0";
+		document.getElementById('logoLines').classList.add('start-screen-vert-translate');
+		document.getElementById('emblem-main').classList.add('start-screen-vert-translate');
+		document.getElementById('lettering').classList.add('start-screen-vert-translate');
+		document.getElementById('nav-arrow').classList.add('nav-arrow-clicked');
+		document.getElementById('nav-arrow').style.opacity = "0";
 		
 		this.logoLinesActive = false;
 		
 		setTimeout(function(){
-			document.getElementById("mainContainer").innerHTML = "";
-			that.controller.getContent("news");
+			document.getElementById('mainContainer').innerHTML = "";
+			that.controller.getContent('news');
 		},1000);
 		
 	}
