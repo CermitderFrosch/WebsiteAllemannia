@@ -9,6 +9,7 @@ class viewMain{
 		this.lettering         = 'RUDER-CLUB </br>"ALLEMANNIA von 1866"</br> HAMBURG';
 		this.logoHeight        = 120;
 		this.logoLinesActive   = false;
+		this.viewContent       = [];
 
 		this.calcLogoCoordinates();
 	}
@@ -107,16 +108,33 @@ class viewMain{
 		this.logoLinesActive = true;
 	}
 	
-	//set content for news-area
-	setNews(){
-		let content = "<div id=\"menu\"><ul>";
+	/* Display menu */
+	setMenu(){
+		
+		let contentNode = document.createElement('div');
+		contentNode.id = 'menu';
+		
+		let content = "<ul>";
 		   content += "<li>News</li>";
 		   content += "<li>Club</li>";
 		   content += "<li>Racing</li>";
 		   content += "<li>HSBA</li>";
 		   content += "<li>Gallery</li>";
-		   content += "</ul></div>";
-		   content += "<div class=\"wrapper-box\" style=\"margin-top:"+ this.controller.windowHeight * 0.1 +"px\">";
+		   content += "</ul>";
+		
+		contentNode.innerHTML = content;
+		document.getElementById('mainContainer').appendChild(contentNode);
+	}
+	
+	//set content for news-area
+	setNews(){
+		let that = this;
+		
+		let contentNode = document.createElement('div');
+		contentNode.classList.add('wrapper-box');
+		contentNode.style.marginTop = this.controller.windowHeight * 0.1 + "px";
+		
+		let content = "";
 
 		this.model.news.forEach(function(val){
 			content += "<div class=\"news-content-box\">";
@@ -132,14 +150,12 @@ class viewMain{
 			content += "<div class=\"news-text-box\">";
 			content += val[1];
 			content += "</div>";
-			
 			content += "</div>";
-			
 		});
 		
-		content += "</div>";
-		
-		document.getElementById('mainContainer').innerHTML = content;
+		contentNode.innerHTML = content;
+		document.getElementById('mainContainer').appendChild(contentNode);
+		this.viewContent.push(contentNode);
 		
 		setTimeout(function(){
 			let news = document.getElementsByClassName('news-content-box');
@@ -147,6 +163,8 @@ class viewMain{
 			for(let i = 0; i < news.length; i++){
 				setTimeout(function(){
 					news[i].classList.add('news-content-box-displayed');
+					news[i].addEventListener('click',function(){
+						that.controller.clickHandler(this);});
 					}, i * 200);
 			}
 		},200);
@@ -168,6 +186,7 @@ class viewMain{
 		
 		setTimeout(function(){
 			document.getElementById('mainContainer').innerHTML = "";
+			that.setMenu();
 			that.controller.getContent('news');
 		},1000);
 		

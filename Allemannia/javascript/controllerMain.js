@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var mainController = '';
 var mainView       = '';
@@ -34,6 +34,7 @@ class controllerMain{
 		this.windowHeight = document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight;
 	}
 	
+	/* Setter & getter-methods */
 	setView(view){
 		this.view = view;
 	}
@@ -50,6 +51,11 @@ class controllerMain{
 	//advise view to set content
 	setContent(content){
 		this.view.setContent(content);
+	}
+	
+	/* Event handler methods */
+	clickHandler(e){
+		console.log(e);
 	}
 	
 }
