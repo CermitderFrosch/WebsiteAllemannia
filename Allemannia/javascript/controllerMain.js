@@ -19,7 +19,7 @@ class controllerMain{
 		
 		this.calcBrowserSize();
 		
-		let mainModel			 = new modelMain(this);
+		let mainModel	   = new modelMain(this);
 		let mainView       = new viewMain(this,mainModel);
 		
 		this.setModel(mainModel);
@@ -44,18 +44,26 @@ class controllerMain{
 	}
 	
 	//Load content from model
-	getContent(content){
-		this.model.getContent(content,0,"setContent");
+	getContent(content, meta = {}){
+		this.model.getContent(content,meta,0,'setContent');
 	}
 	
 	//advise view to set content
-	setContent(content){
-		this.view.setContent(content);
+	setContent(content, meta = {}){
+		this.view.setContent(content, meta);
 	}
 	
 	/* Event handler methods */
 	clickHandler(e){
-		console.log(e);
+		let contentType = e.getAttribute('contentType');
+		
+		switch(contentType){
+			case 'article':
+				let meta = {articleID : e.getAttribute('articleID') };
+			    this.view.clearContent();
+				this.getContent('article', meta);
+				break;
+		}
 	}
 	
 }
