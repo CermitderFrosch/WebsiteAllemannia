@@ -99,6 +99,17 @@ class viewMain{
 		
 	}
 	
+	/* Hide actual content */
+	contentOut(){
+		this.viewContent.forEach(function(object){
+			$(object).animate({opacity: 0}, 500);
+			setTimeout(function(){
+			let parent = document.getElementById(object.getAttribute("id")).parentNode;
+		  parent.removeChild(object);
+		},500);
+		});
+	}
+	
 	setLogoLines(){
 		
 		let lineT = "<polyline id=\"lineTop\" points=\""+ this.lT +"\" style=\"fill:none;stroke:#cc071e;stroke-width:2;opacity:1\"></polyline>";
@@ -132,12 +143,13 @@ class viewMain{
 		
 		let contentNode = document.createElement('div');
 		contentNode.classList.add('wrapper-box');
+		contentNode.id = "news-wrapper";
 		contentNode.style.marginTop = this.controller.windowHeight * 0.1 + "px";
 		
 		let content = "";
 
 		this.model.news.forEach(function(val){
-			content += "<div class=\"news-content-box\">";
+			content += "<div class=\"news-content-box\" type=\"news\" articleID=\""+ val[3] +"\">";
 			//Image
 			content += "<div class=\"news-img-container\">";
 			content += "<img class=\"news-img\" src=\"../images/"+ val[2] +"\"></img>";

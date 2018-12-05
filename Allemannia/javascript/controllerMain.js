@@ -55,7 +55,18 @@ class controllerMain{
 	
 	/* Event handler methods */
 	clickHandler(e){
-		console.log(e);
+		let callType = e.getAttribute("type");
+		
+		switch(callType){
+			case "news":
+				/* hide actual content */
+				this.view.contentOut();
+				/* display article */
+				
+				break;
+			default:
+				break;
+		}
 	}
 	
 }
