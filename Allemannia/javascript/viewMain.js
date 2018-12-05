@@ -89,17 +89,21 @@ class viewMain{
 	
 	/* Setter methods */
 	/* main setter method for content */
-	setContent(content){
+	setContent(content, meta = {}){
 		
 		switch(content){
 			case 'news':
 				this.setNews();
 				break;
+				
+			case 'article':
+				this.setArticle(meta.articleID);
+			    break;
 		}
 		
 	}
 	
-	/* Hide actual content */
+	/* Remove actual content */
 	contentOut(){
 		this.viewContent.forEach(function(object){
 			$(object).animate({opacity: 0}, 500);
@@ -149,7 +153,9 @@ class viewMain{
 		let content = "";
 
 		this.model.news.forEach(function(val){
+
 			content += "<div class=\"news-content-box\" type=\"news\" articleID=\""+ val[3] +"\">";
+
 			//Image
 			content += "<div class=\"news-img-container\">";
 			content += "<img class=\"news-img\" src=\"../images/"+ val[2] +"\"></img>";
@@ -181,6 +187,23 @@ class viewMain{
 			}
 		},200);
 		
+	}
+	
+	setArticle(articleID){
+		let articleSrc = this.model.articles[articleID];
+		let article    = document.createElement('div');
+		article.classList.add('article');
+		article.setAttribute('articleID', articleID);
+		
+		let content = "";
+		content    += "<div class=\"article-img-container\">";
+		content    += "<img class=\"article-img\" src=\"../images/"+ articleSrc[2] +"\"></img></div>";
+		content    += "<div class=\"article-headline-container\">";
+		content    += "<span class=\"article-headline\">"+ articleSrc[0] +"</span></div>";
+		content    += "<div class=\"article-text-container\">"+ articleSrc[1] +"</div>";
+		
+		article.innerHTML = content;
+		document.getElementById('mainContainer').appendChild(article);
 	}
 	
 	/* Navigation methods */
