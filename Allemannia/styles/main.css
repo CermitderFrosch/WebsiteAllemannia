@@ -96,6 +96,14 @@
     cursor: pointer;
     text-decoration: underline #cc071e;
   }
+  .content-off {
+    animation: content-hide 0.5s linear forwards;
+  }
+  @keyframes content-hide {
+    to {
+      opacity: 0;
+    }
+  }
   .nav-arrow-clicked {
     -webkit-transition: 0.25s;
     -moz-transition: 0.25s;
