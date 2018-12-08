@@ -90,7 +90,6 @@ class viewMain{
 	/* Setter methods */
 	/* main setter method for content */
 	setContent(content, meta = {}){
-		
 		switch(content){
 			case 'news':
 				this.setNews();
@@ -100,7 +99,6 @@ class viewMain{
 				this.setArticle(meta.articleID);
 			    break;
 		}
-		
 	}
 	
 	/* Remove actual content */
@@ -204,6 +202,16 @@ class viewMain{
 		
 		article.innerHTML = content;
 		document.getElementById('mainContainer').appendChild(article);
+		
+		/* compute sizes */
+		let width = this.controller.windowWidth;
+		let articleWidth = width*0.7;
+		let marginLeft = 0.3 * width;
+		marginLeft -= (parseInt(document.getElementById('menu').offsetWidth) +
+									 parseInt(document.getElementById('menu').style.marginLeft));
+		
+		article.style.width      = articleWidth;
+		article.style.marginLeft = marginLeft;
 	}
 	
 	/* Navigation methods */

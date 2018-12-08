@@ -55,14 +55,15 @@ class controllerMain{
 	
 	/* Event handler methods */
 	clickHandler(e){
-		let callType = e.getAttribute("type");
+		let callType = e.getAttribute('type');
 		
 		switch(callType){
-			case "news":
+			case 'news':
 				/* hide actual content */
 				this.view.contentOut();
 				/* display article */
-				
+				let meta = {articleID: e.getAttribute('articleID')};
+				this.view.setContent('article', meta);
 				break;
 			default:
 		}
