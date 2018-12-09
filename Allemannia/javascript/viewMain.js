@@ -124,19 +124,19 @@ class viewMain{
 	/* Display menu */
 	setMenu(){
 		
-		let contentNode = document.createElement('div');
-		contentNode.id = 'menu';
+		let menuNode = document.createElement('div');
+		menuNode.id  = 'menu';
+		let ulNode   = document.createElement('ul');
 		
-		let content = "<ul>";
-		   content += "<li>News</li>";
-		   content += "<li>Club</li>";
-		   content += "<li>Racing</li>";
-		   content += "<li>HSBA</li>";
-		   content += "<li>Gallery</li>";
-		   content += "</ul>";
+		let content  = "<li>News</li>";
+		    content += "<li>Club</li>";
+		    content += "<li>Racing</li>";
+		    content += "<li>HSBA</li>";
+		    content += "<li>Gallery</li>";
 		
-		contentNode.innerHTML = content;
-		document.getElementById('mainContainer').appendChild(contentNode);
+		ulNode.innerHTML = content;
+		menuNode.appendChild(ulNode);
+		document.getElementById('mainContainer').appendChild(menuNode);
 	}
 	
 	//set content for news-area
@@ -145,8 +145,8 @@ class viewMain{
 		
 		let contentNode = document.createElement('div');
 		contentNode.classList.add('wrapper-box');
-		contentNode.id = "news-wrapper";
-		contentNode.style.marginTop = this.controller.windowHeight * 0.1 + "px";
+		contentNode.id = 'news-wrapper';
+		contentNode.style.marginTop = this.controller.windowHeight * 0.1 + 'px';
 		
 		let content = "";
 
@@ -202,15 +202,17 @@ class viewMain{
 		article.innerHTML = content;
 		
 		/* compute sizes */
-		let width = this.controller.windowWidth;
+		let width        = this.controller.windowWidth;
 		let articleWidth = width*0.7;
-		let marginLeft = 0.3 * width;
-		marginLeft -= (parseInt(document.getElementById('menu').offsetWidth) +
-									 parseInt(document.getElementById('menu').style.marginLeft));
+		let marginLeft   = width*0.3;
+		let menu         = document.getElementById('menu');
+		let menuStyle    = window.getComputedStyle(menu);
+		marginLeft      -= (parseInt(menuStyle.getPropertyValue('width')) + parseInt(menuStyle.getPropertyValue('margin-left')));
 		
 		article.style.width = articleWidth + "px";
-		console.log("marginLeft");
-		article.style.marginLeft = marginLeft + "px";
+		console.log(marginLeft);
+		//article.style.marginLeft = marginLeft + "px";
+		article.style.marginLeft = "100px";
 		
 		document.getElementById('mainContainer').appendChild(article);
 	}
