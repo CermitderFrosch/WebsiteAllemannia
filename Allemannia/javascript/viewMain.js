@@ -199,9 +199,7 @@ class viewMain{
 		content    += "<div class=\"article-headline-container\">";
 		content    += "<span class=\"article-headline\">"+ articleSrc[0] +"</span></div>";
 		content    += "<div class=\"article-text-container\">"+ articleSrc[1] +"</div>";
-		
 		article.innerHTML = content;
-		document.getElementById('mainContainer').appendChild(article);
 		
 		/* compute sizes */
 		let width = this.controller.windowWidth;
@@ -210,8 +208,11 @@ class viewMain{
 		marginLeft -= (parseInt(document.getElementById('menu').offsetWidth) +
 									 parseInt(document.getElementById('menu').style.marginLeft));
 		
-		article.style.width      = articleWidth;
-		article.style.marginLeft = marginLeft;
+		article.style.width = articleWidth + "px";
+		console.log("marginLeft");
+		article.style.marginLeft = marginLeft + "px";
+		
+		document.getElementById('mainContainer').appendChild(article);
 	}
 	
 	/* Navigation methods */
