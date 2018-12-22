@@ -190,29 +190,19 @@ class viewMain{
 	setArticle(articleID){
 		let articleSrc = this.model.articles[articleID];
 		let article    = document.createElement('div');
-		article.classList.add('article');
+		article.classList.add('article-container');
 		article.setAttribute('articleID', articleID);
 		
 		let content = "";
-		content    += "<div class=\"article-img-container\">";
-		content    += "<img class=\"article-img\" src=\"../images/"+ articleSrc[2] +"\"></img></div>";
-		content    += "<div class=\"article-headline-container\">";
-		content    += "<span class=\"article-headline\">"+ articleSrc[0] +"</span></div>";
-		content    += "<div class=\"article-text-container\">"+ articleSrc[1] +"</div>";
+		content    += "<h1>"+ articleSrc[0] +"</h1>";
+		content    += "<p>"+ articleSrc[1] +"</p>";
+		content    += "<img class=\"article-img\" src=\"../images/"+ articleSrc[2] +"\"></img>";
 		article.innerHTML = content;
 		
 		/* compute sizes */
-		let width        = this.controller.windowWidth;
-		let articleWidth = width*0.7;
-		let marginLeft   = width*0.3;
-		let menu         = document.getElementById('menu');
-		let menuStyle    = window.getComputedStyle(menu);
-		marginLeft      -= (parseInt(menuStyle.getPropertyValue('width')) + parseInt(menuStyle.getPropertyValue('margin-left')));
-		
-		article.style.width = articleWidth + "px";
-		console.log(marginLeft);
-		//article.style.marginLeft = marginLeft + "px";
-		article.style.marginLeft = "100px";
+		/*let width        = this.controller.windowWidth;
+		let left         = width*0.2;
+		article.style.left = left + "px"; */
 		
 		document.getElementById('mainContainer').appendChild(article);
 	}

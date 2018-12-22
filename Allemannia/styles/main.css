@@ -168,12 +168,23 @@
     margin-top: 50px;
     height: 40%;
   }
-  .article {
+  .article-container {
+    position: fixed;
     display: inline-block;
     margin-top: 100px;
+    margin-left: 10%;
   }
-  .article-img {
-    width: 100%;
-    max-width: 1000px;
+  .article-container > h1 {
+    font-size: 30px;
+    color: #003871;
+  }
+  .article-container > p {
+    display: inline-block;
+    width: 20%;
+  }
+  .article-container > img {
+    position: absolute;
+    left: 30%;
+    max-width: 60%;
   }
 }
