@@ -8,6 +8,7 @@
     background-color: #fff;
     height: 100%;
     width: 100%;
+    overflow-y: scroll;
   }
   ul {
     margin: 0px;
@@ -169,10 +170,9 @@
     height: 40%;
   }
   .article-container {
-    position: fixed;
-    display: inline-block;
+    position: relative;
     margin-top: 100px;
-    margin-left: 10%;
+    left: 10%;
   }
   .article-container > h1 {
     font-size: 30px;
@@ -182,9 +182,10 @@
     display: inline-block;
     width: 20%;
   }
-  .article-container > img {
-    position: absolute;
-    left: 30%;
-    max-width: 60%;
+  .article-img {
+    position: fixed;
+    top: 200px;
+    right: 100px;
+    width: 40%;
   }
 }
