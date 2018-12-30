@@ -11,10 +11,12 @@
   }
 
   body{
-		background-color: #fff;
-		height: 100%;
-		width: 100%;
-	    overflow-y: scroll;
+	background-color: #fff;
+	height: 100%;
+	width: 100%;
+	overflow-y: scroll;
+	position: absolute;
+	top: 0px;
   }
 	
 	ul{
@@ -99,8 +101,9 @@
 	
 	#menu{
 		float: left;
+		position: sticky;
 		
-		margin-top: 10%;
+		top: 15%;
 		margin-left: 5%;
 		
 		border-right: 1px solid @standard-red;

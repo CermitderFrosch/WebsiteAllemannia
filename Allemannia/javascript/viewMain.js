@@ -5,7 +5,7 @@ class viewMain{
 	constructor(controller,model){
 
 		this.controller        = controller;
-		this.model 					   = model;
+		this.model 			   = model;
 		this.lettering         = 'RUDER-CLUB </br>"ALLEMANNIA von 1866"</br> HAMBURG';
 		this.logoHeight        = 120;
 		this.logoLinesActive   = false;
@@ -110,6 +110,7 @@ class viewMain{
 		  parent.removeChild(object);
 		},500);
 		});
+		this.viewContent = [];
 	}
 	
 	setLogoLines(){
@@ -124,11 +125,12 @@ class viewMain{
 	/* Display menu */
 	setMenu(){
 		
+		let that = this;
 		let menuNode = document.createElement('div');
 		menuNode.id  = 'menu';
 		let ulNode   = document.createElement('ul');
 		
-		let content  = "<li>News</li>";
+		let content  = "<li type='newsNav'>News</li>";
 		    content += "<li>Club</li>";
 		    content += "<li>Racing</li>";
 		    content += "<li>HSBA</li>";
@@ -137,6 +139,11 @@ class viewMain{
 		ulNode.innerHTML = content;
 		menuNode.appendChild(ulNode);
 		document.getElementById('mainContainer').appendChild(menuNode);
+		
+		let news = document.getElementById('menu').getElementsByTagName('li');
+		news[0].addEventListener('click',function(){
+		  that.controller.clickHandler(this);
+		});
 	}
 	
 	//set content for news-area
@@ -190,6 +197,7 @@ class viewMain{
 	setArticle(articleID){
 		let articleSrc = this.model.articles[articleID];
 		let article    = document.createElement('div');
+		article.id     = 'article-container';
 		article.classList.add('article-container');
 		article.setAttribute('articleID', articleID);
 		
@@ -200,16 +208,15 @@ class viewMain{
 		article.innerHTML = content;
 		
 		let articleImg = document.createElement('img');
+		articleImg.id  = 'article-img';
 		articleImg.classList.add('article-img');
 		articleImg.setAttribute('src', '../images/'+ articleSrc[2]);
 		
-		/* compute sizes */
-		/*let width        = this.controller.windowWidth;
-		let left         = width*0.2;
-		article.style.left = left + "px"; */
-		
 		document.getElementById('mainContainer').appendChild(article);
 		document.getElementById('mainContainer').appendChild(articleImg);
+		
+		this.viewContent.push(article);
+		this.viewContent.push(articleImg);
 	}
 	
 	/* Navigation methods */

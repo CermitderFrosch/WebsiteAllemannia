@@ -19,7 +19,7 @@ class controllerMain{
 		
 		this.calcBrowserSize();
 		
-		let mainModel	     = new modelMain(this);
+		let mainModel	   = new modelMain(this);
 		let mainView       = new viewMain(this,mainModel);
 		
 		this.setModel(mainModel);
@@ -56,15 +56,20 @@ class controllerMain{
 	/* Event handler methods */
 	clickHandler(e){
 		let callType = e.getAttribute('type');
-		
+		let meta = {};
 		switch(callType){
 			case 'news':
 				/* hide actual content */
 				this.view.contentOut();
 				/* display article */
-				let meta = {articleID: e.getAttribute('articleID')};
+				meta = {articleID: e.getAttribute('articleID')};
 				this.view.setContent('article', meta);
 				break;
+			case 'newsNav':
+				this.view.contentOut();
+				meta = {};
+				this.view.setContent('news', meta);
+			    break;
 			default:
 		}
 	}
