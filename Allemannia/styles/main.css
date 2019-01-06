@@ -81,10 +81,9 @@
     cursor: pointer;
   }
   #menu {
-    float: left;
-    position: sticky;
+    position: fixed;
     top: 15%;
-    margin-left: 5%;
+    left: 5%;
     border-right: 1px solid #cc071e;
     padding-right: 30px;
     font-size: 14px;
@@ -174,21 +173,21 @@
   }
   .article-container {
     position: relative;
-    margin-top: 100px;
-    left: 10%;
+    left: 20%;
+    top: 10%;
+    width: 60%;
   }
   .article-container > h1 {
     font-size: 30px;
     color: #003871;
   }
   .article-container > p {
-    display: inline-block;
-    width: 20%;
-  }
-  .article-img {
-    position: fixed;
-    top: 200px;
-    right: 100px;
     width: 40%;
+    display: inline-block;
+  }
+  .article-container > img {
+    position: absolute;
+    left: 50%;
+    width: 50%;
   }
 }

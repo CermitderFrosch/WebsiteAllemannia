@@ -204,19 +204,12 @@ class viewMain{
 		let content = "";
 		content    += "<h1>"+ articleSrc[0] +"</h1>";
 		content    += "<p>"+ articleSrc[1] +"</p>";
-		//content    += "<img class=\"article-img\" src=\"../images/"+ articleSrc[2] +"\"></img>";
+		content    += "<img src=\"../images/"+ articleSrc[2] +"\"></img>";
 		article.innerHTML = content;
 		
-		let articleImg = document.createElement('img');
-		articleImg.id  = 'article-img';
-		articleImg.classList.add('article-img');
-		articleImg.setAttribute('src', '../images/'+ articleSrc[2]);
-		
 		document.getElementById('mainContainer').appendChild(article);
-		document.getElementById('mainContainer').appendChild(articleImg);
 		
 		this.viewContent.push(article);
-		this.viewContent.push(articleImg);
 	}
 	
 	/* Navigation methods */

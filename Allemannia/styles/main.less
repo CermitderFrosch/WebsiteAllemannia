@@ -100,11 +100,10 @@
   }
 	
 	#menu{
-		float: left;
-		position: sticky;
+		position: fixed;
 		
 		top: 15%;
-		margin-left: 5%;
+		left: 5%;
 		
 		border-right: 1px solid @standard-red;
 		padding-right: 30px;
@@ -218,9 +217,11 @@
   }
 	
 	.article-container{
-	  position: relative;	
-	  margin-top: 100px;
-	  left: 10%;
+	  position: relative;
+		left: 20%;
+		top: 10%;
+		
+		width: 60%;
 	}
 	
 	.article-container > h1{
@@ -229,15 +230,14 @@
 	}
 	
 	.article-container > p{
+		width: 40%;
 		display: inline-block;
-		width: 20%;
 	}
 	
-	.article-img{
-		position: fixed;
-		top: 200px;
-		right: 100px;
-		width: 40%;
+	.article-container > img{
+		position: absolute;
+		left: 50%;
+	  width: 50%;
 	}
 
 }
