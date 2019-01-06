@@ -176,6 +176,15 @@
     left: 20%;
     top: 10%;
     width: 60%;
+    opacity: 0;
+  }
+  .article-container-displayed {
+    animation: article-display 0.9s linear forwards;
+  }
+  @keyframes article-display {
+    to {
+      opacity: 1;
+    }
   }
   .article-container > h1 {
     font-size: 30px;

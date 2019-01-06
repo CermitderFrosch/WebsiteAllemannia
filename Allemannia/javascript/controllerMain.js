@@ -19,8 +19,8 @@ class controllerMain{
 		
 		this.calcBrowserSize();
 		
-		let mainModel	   = new modelMain(this);
-		let mainView       = new viewMain(this,mainModel);
+		let mainModel = new modelMain(this);
+		let mainView  = new viewMain(this,mainModel);
 		
 		this.setModel(mainModel);
 		this.setView(mainView);

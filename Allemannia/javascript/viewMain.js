@@ -106,9 +106,9 @@ class viewMain{
 		this.viewContent.forEach(function(object){
 			$(object).animate({opacity: 0}, 500);
 			setTimeout(function(){
-			let parent = document.getElementById(object.getAttribute("id")).parentNode;
-		  parent.removeChild(object);
-		},500);
+			  let parent = document.getElementById(object.getAttribute("id")).parentNode;
+		    parent.removeChild(object);
+		  },300);
 		});
 		this.viewContent = [];
 	}
@@ -125,7 +125,7 @@ class viewMain{
 	/* Display menu */
 	setMenu(){
 		
-		let that = this;
+		let that     = this;
 		let menuNode = document.createElement('div');
 		menuNode.id  = 'menu';
 		let ulNode   = document.createElement('ul');
@@ -150,9 +150,9 @@ class viewMain{
 	setNews(){
 		let that = this;
 		
-		let contentNode = document.createElement('div');
+		let contentNode             = document.createElement('div');
 		contentNode.classList.add('wrapper-box');
-		contentNode.id = 'news-wrapper';
+		contentNode.id              = 'news-wrapper';
 		contentNode.style.marginTop = this.controller.windowHeight * 0.1 + 'px';
 		
 		let content = "";
@@ -190,7 +190,7 @@ class viewMain{
 						that.controller.clickHandler(this);});
 					}, i * 200);
 			}
-		},200);
+		},300);
 		
 	}
 	
@@ -207,7 +207,10 @@ class viewMain{
 		content    += "<img src=\"../images/"+ articleSrc[2] +"\"></img>";
 		article.innerHTML = content;
 		
-		document.getElementById('mainContainer').appendChild(article);
+		setTimeout(function(){
+		  document.getElementById('mainContainer').appendChild(article);
+			article.classList.add('article-container-displayed');
+		},400);
 		
 		this.viewContent.push(article);
 	}
