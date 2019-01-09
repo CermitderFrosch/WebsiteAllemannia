@@ -5,27 +5,26 @@ var mainView       = '';
 var mainModel      = '';
 
 $(document).ready(function(){
-		mainController = new controllerMain();
+  mainController = new controllerMain();
 });
 
 $(window).resize(function(){
-	mainController.calcBrowserSize();
-	mainController.view.resize();
+  mainController.calcBrowserSize();
+  mainController.view.resize();
 });
 
 class controllerMain{
 	
-	constructor(){
+	constructor(){	
+	  this.calcBrowserSize();
 		
-		this.calcBrowserSize();
+	  let mainModel = new modelMain(this);
+	  let mainView  = new viewMain(this, mainModel);
 		
-		let mainModel = new modelMain(this);
-		let mainView  = new viewMain(this,mainModel);
-		
-		this.setModel(mainModel);
-		this.setView(mainView);
+	  this.setModel(mainModel);
+	  this.setView(mainView);
 
-    this.view.init();
+      this.view.init();
 		
 	}
 	
@@ -36,16 +35,16 @@ class controllerMain{
 	
 	/* Setter & getter-methods */
 	setView(view){
-		this.view = view;
+	  this.view = view;
 	}
 	
 	setModel(model){
-		this.model = model;
+	  this.model = model;
 	}
 	
 	//Load content from model
 	getContent(content, meta = {}){
-		this.model.getContent(content,meta,0,'setContent');
+	  this.model.getContent(content, meta, 0, 'setContent');
 	}
 	
 	//advise view to set content
@@ -70,7 +69,13 @@ class controllerMain{
 				meta = {};
 				this.view.setContent('news', meta);
 			    break;
+			case 'galleryNav':
+				this.view.contentOut();
+				meta = {};
+				this.view.setContent('gallery', meta);
+				break;
 			default:
+				break;
 		}
 	}
 	

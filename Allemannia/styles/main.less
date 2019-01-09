@@ -216,13 +216,15 @@
     height: 40%;
   }
 	
+	//Article
+	
 	.article-container{
 	  position: relative;
-		left: 20%;
-		top: 10%;
+	  left: 20%;
+   	  top: 10%;
 		
-		width: 60%;
-		opacity: 0;
+   	  width: 60%;
+	  opacity: 0;
 	}
 	
 	.article-container-displayed{
@@ -230,25 +232,43 @@
 	}
 	
 	@keyframes article-display{
-		to{
-			opacity: 1;
-		}
+	  to{
+	    opacity: 1;
+	  }
 	}
 	
 	.article-container > h1{
-    font-size: 30px;
-    color: @standard-blue;
+      font-size: 30px;
+      color: @standard-blue;
 	}
 	
 	.article-container > p{
-		width: 40%;
-		display: inline-block;
+	  width: 40%;
+	  display: inline-block;
 	}
 	
 	.article-container > img{
-		position: absolute;
-		left: 50%;
+	  position: absolute;
+	  left: 50%;
 	  width: 50%;
+	}
+	
+	//Gallery
+	
+	.gallery-container{
+	  position: relative;
+	  left: 20%;
+		
+   	  width: 80%;
+	  height: 100%;
+	  opacity: 1;
+	}
+	
+	.gallery-preview-container{
+	  position: absolute;
+	  bottom: 0px;
+	  left: 5%;
+	  width: 90%;
 	}
 
 }

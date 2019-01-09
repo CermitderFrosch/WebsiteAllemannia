@@ -15,11 +15,11 @@ class viewMain{
 	}
 
 	init(){
-		this.renderStartScreen();
+	  this.renderStartScreen();
 	}
 	
 	resize(){
-		
+		this.controller.calcBrowserSize();
 		if(this.logoLinesActive){
 			this.calcLogoCoordinates();
 			this.resizeLogoLines();
@@ -93,11 +93,15 @@ class viewMain{
 		switch(content){
 			case 'news':
 				this.setNews();
-				break;
-				
+				break;	
 			case 'article':
 				this.setArticle(meta.articleID);
 			    break;
+			case 'gallery':
+				this.setGallery();
+				break;
+			default:
+				break;
 		}
 	}
 	
@@ -134,7 +138,7 @@ class viewMain{
 		    content += "<li>Club</li>";
 		    content += "<li>Racing</li>";
 		    content += "<li>HSBA</li>";
-		    content += "<li>Gallery</li>";
+		    content += "<li type='galleryNav'>Gallery</li>";
 		
 		ulNode.innerHTML = content;
 		menuNode.appendChild(ulNode);
@@ -142,6 +146,9 @@ class viewMain{
 		
 		let news = document.getElementById('menu').getElementsByTagName('li');
 		news[0].addEventListener('click',function(){
+		  that.controller.clickHandler(this);
+		});
+		news[4].addEventListener('click',function(){
 		  that.controller.clickHandler(this);
 		});
 	}
@@ -213,6 +220,22 @@ class viewMain{
 		},400);
 		
 		this.viewContent.push(article);
+	}
+	
+	setGallery(){
+	  let gallery = document.createElement('div');
+	  let preview = document.createElement('div');
+		
+	  gallery.classList.add('gallery-container');
+	  preview.classList.add('gallery-preview-container');
+	
+	  gallery.appendChild(preview);
+	  document.getElementById('mainContainer').appendChild(gallery);
+	  this.setGalPrevCont();
+	}
+	
+	setGalPrevCont(){
+		
 	}
 	
 	/* Navigation methods */
