@@ -266,9 +266,20 @@
 	
 	.gallery-preview-container{
 	  position: absolute;
-	  bottom: 0px;
+		display: flex;
+		flex-direction: row;
+	  bottom: 10px;
 	  left: 5%;
 	  width: 90%;
+	}
+	
+	.gallery-preview-container > img{
+		height: 200px;
+		align-self: flex-end;
+	}
+	
+	.gallery-preview-container > img:hover{
+		height: 250px;
 	}
 
 }

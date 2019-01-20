@@ -227,15 +227,23 @@ class viewMain{
 	  let preview = document.createElement('div');
 		
 	  gallery.classList.add('gallery-container');
-	  preview.classList.add('gallery-preview-container');
+	  preview.classList.add('gallery-preview-container');		
 	
 	  gallery.appendChild(preview);
 	  document.getElementById('mainContainer').appendChild(gallery);
-	  this.setGalPrevCont();
+	  this.setGalPrevCont(preview);
 	}
 	
-	setGalPrevCont(){
+	setGalPrevCont(gallery){
+		let content = "";
 		
+		content += "<img src=\"../images/rca/rbl.jpg\">";
+		
+		content += "<img src=\"../images/rca/masters.jpg\">";
+		
+		content += "<img src=\"../images/rca/rbl.jpg\">";
+		
+		gallery.innerHTML = content;
 	}
 	
 	/* Navigation methods */
