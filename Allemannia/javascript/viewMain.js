@@ -100,6 +100,9 @@ class viewMain{
 			case 'gallery':
 				this.setGallery();
 				break;
+			case 'galleryImg':
+				this.setGalleryImage(meta.src);
+				break;
 			default:
 				break;
 		}
@@ -224,26 +227,43 @@ class viewMain{
 	
 	setGallery(){
 	  let gallery = document.createElement('div');
+	  let main    = document.createElement('main');
 	  let preview = document.createElement('div');
 		
 	  gallery.classList.add('gallery-container');
+	  main.id = 'gallery-main-container';
 	  preview.classList.add('gallery-preview-container');		
 	
+	  gallery.appendChild(main);
 	  gallery.appendChild(preview);
 	  document.getElementById('mainContainer').appendChild(gallery);
 	  this.setGalPrevCont(preview);
 	}
 	
 	setGalPrevCont(gallery){
+		let that = this;
 		let content = "";
 		
-		content += "<img src=\"../images/rca/rbl.jpg\">";
+		content += "<img class=\"gallery-preview-img\" type=\"galprev\" src=\"../images/rca/rbl.jpg\">";
 		
-		content += "<img src=\"../images/rca/masters.jpg\">";
+		content += "<img class=\"gallery-preview-img\" type=\"galprev\" src=\"../images/rca/masters.jpg\">";
 		
-		content += "<img src=\"../images/rca/rbl.jpg\">";
+		content += "<img class=\"gallery-preview-img\" type=\"galprev\" src=\"../images/rca/rbl.jpg\">";
 		
 		gallery.innerHTML = content;
+		
+		let galPrevs = document.getElementsByClassName('gallery-preview-img');
+		
+		for(let i = 0; i < galPrevs.length; i++){
+		  galPrevs[i].addEventListener('click', function(){    that.controller.clickHandler(this);
+		  }); 
+		}
+	}
+	
+	/* Set new image in gallery main container */
+	setGalleryImage(src){
+	  let img = "<img src=\""+ src +"\">";
+	  document.getElementById('gallery-main-container').innerHTML = img;
 	}
 	
 	/* Navigation methods */

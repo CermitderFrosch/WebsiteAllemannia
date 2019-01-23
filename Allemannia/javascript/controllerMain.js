@@ -74,6 +74,10 @@ class controllerMain{
 				meta = {};
 				this.view.setContent('gallery', meta);
 				break;
+			case 'galprev':
+				meta = {src: e.getAttribute('src')};
+				this.view.setContent('galleryImg', meta);
+				break;
 			default:
 				break;
 		}

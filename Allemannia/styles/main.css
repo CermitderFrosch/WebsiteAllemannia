@@ -210,15 +210,17 @@
     position: absolute;
     display: flex;
     flex-direction: row;
-    bottom: 10px;
+    bottom: 0px;
     left: 5%;
     width: 90%;
+    height: 15%;
   }
   .gallery-preview-container > img {
-    height: 200px;
+    height: 100%;
     align-self: flex-end;
   }
   .gallery-preview-container > img:hover {
-    height: 250px;
+    height: 120%;
+    cursor: pointer;
   }
 }
