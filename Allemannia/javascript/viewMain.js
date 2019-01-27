@@ -96,7 +96,7 @@ class viewMain{
 				break;	
 			case 'article':
 				this.setArticle(meta.articleID);
-			    break;
+			  break;
 			case 'gallery':
 				this.setGallery();
 				break;
@@ -231,31 +231,35 @@ class viewMain{
 	  let preview = document.createElement('div');
 		
 	  gallery.classList.add('gallery-container');
-	  main.id = 'gallery-main-container';
+		gallery.id = 'gallery-container';
+	  main.id    = 'gallery-main-container';
 	  preview.classList.add('gallery-preview-container');		
 	
 	  gallery.appendChild(main);
 	  gallery.appendChild(preview);
 	  document.getElementById('mainContainer').appendChild(gallery);
 	  this.setGalPrevCont(preview);
+		this.viewContent.push(gallery);
 	}
 	
+	/* Vorschau für Gallerie füllen */
 	setGalPrevCont(gallery){
 		let that = this;
 		let content = "";
 		
-		content += "<img class=\"gallery-preview-img\" type=\"galprev\" src=\"../images/rca/rbl.jpg\">";
-		
-		content += "<img class=\"gallery-preview-img\" type=\"galprev\" src=\"../images/rca/masters.jpg\">";
-		
-		content += "<img class=\"gallery-preview-img\" type=\"galprev\" src=\"../images/rca/rbl.jpg\">";
+		let imgs = this.model.galleryImgs;
+		let i;
+		for(i in imgs){
+		  content += "<img class=\"gallery-preview-img\" type=\"galprev\" src=\"../images/"+ imgs[i] +"\">";
+		}
 		
 		gallery.innerHTML = content;
 		
 		let galPrevs = document.getElementsByClassName('gallery-preview-img');
 		
 		for(let i = 0; i < galPrevs.length; i++){
-		  galPrevs[i].addEventListener('click', function(){    that.controller.clickHandler(this);
+		  galPrevs[i].addEventListener('click', function(){
+			  that.controller.clickHandler(this);
 		  }); 
 		}
 	}

@@ -206,6 +206,16 @@
     height: 100%;
     opacity: 1;
   }
+  #gallery-main-container {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 75%;
+  }
+  #gallery-main-container > img {
+    max-height: 100%;
+  }
   .gallery-preview-container {
     position: absolute;
     display: flex;

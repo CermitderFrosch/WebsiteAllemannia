@@ -68,7 +68,7 @@ class controllerMain{
 				this.view.contentOut();
 				meta = {};
 				this.view.setContent('news', meta);
-			    break;
+			  break;
 			case 'galleryNav':
 				this.view.contentOut();
 				meta = {};
